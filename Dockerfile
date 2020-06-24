@@ -21,3 +21,4 @@ RUN echo "PermitRootLogin yes" >> /etc/ssh/sshd_config
 RUN echo 'root:root' | chpasswd
 
 CMD ["/bin/bash"]
+
