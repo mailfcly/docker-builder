@@ -7,6 +7,9 @@ RUN apk add curl && curl -L ${QEMU_URL} | tar zxvf - -C . --strip-components 1
 
 FROM arm32v5/ubuntu:18.04
 
+# Add QEMU
+COPY --from=builder qemu-arm-static /usr/bin
+
 RUN \
   apt-get update && \
   apt-get -y upgrade && \
