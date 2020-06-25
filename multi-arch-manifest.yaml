@@ -1,0 +1,25 @@
+image: mailfcly/docker-builder:latest
+manifests:
+  # - image: mailfcly/docker-builder:amd64
+  #   platform:
+  #     architecture: amd64
+  #     os: linux
+  - image: mailfcly/docker-builder:i386
+    platform:
+      architecture: i386
+      os: linux
+  # - image: mailfcly/docker-builder:arm32v5
+  #   platform:
+  #     architecture: arm
+  #     os: linux
+  #     variant: v5
+  - image: mailfcly/docker-builder:arm32v7
+    platform:
+      architecture: arm
+      os: linux
+      variant: v7
+  # - image: mailfcly/docker-builder:arm64v8
+  #   platform:
+  #     architecture: arm64
+  #     os: linux
+  #     variant: v8

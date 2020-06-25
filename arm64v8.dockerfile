@@ -1,7 +1,11 @@
-FROM i386/ubuntu:18.04
+FROM alpine AS builder
 
-ENV LC_ALL C.UTF-8
-ENV LANG C.UTF-8
+# Download QEMU, see https://github.com/docker/hub-feedback/issues/1261
+ENV QEMU_URL https://github.com/balena-io/qemu/releases/download/v3.0.0%2Bresin/qemu-3.0.0+resin-aarch64.tar.gz
+RUN apk add curl && curl -L ${QEMU_URL} | tar zxvf - -C . --strip-components 1
+
+
+FROM arm64v8/ubuntu:18.04
 
 RUN \
   apt-get update && \
@@ -23,4 +27,3 @@ RUN echo "PermitRootLogin yes" >> /etc/ssh/sshd_config
 RUN echo 'root:root' | chpasswd
 
 CMD ["/bin/bash"]
-
